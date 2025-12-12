@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../scripts/layout_generator.js"></script>
+    <script src="../scripts/utils.js"></script>
+    <link rel="stylesheet" type="text/css" href="../style/stylesheet.css" />
+</head>
+
+<body>
+
+    <div id="header"><div class="logo"></div><span class="main-label">Генератор Кроссвордов с ИИ</span></div>
+    <div class="container">
+        <div id="content" style="font-family: 'Courier New', Courier, monospace">
+        </div><br>
+        <div id="clues" style="font-family: 'Courier New', Courier, monospace">
+        </div>
+    </div>
+    <div id="control" style="font-family: 'Courier New', Courier, monospace">
+        <label for="theme">Тема  </label><input id="theme" type="text">
+        <button id="accept">Кроссворд по теме</button>
+        <button id="verify">Проверить</button>
+    </div>
+    <script>
+        let buttonAccept = document.getElementById('accept')
+        let buttonCheck = document.getElementById('verify') 
+        let inputTheme = document.getElementById('theme')
+
+        let input_json = []
+
+        buttonAccept.addEventListener('click', async () => {
+            input_json = await makeGame(inputTheme.value)
+        })
+
+        buttonCheck.onclick = e => {
+            alert((isCorrect(input_json)) ? "OK" : "NOT OK")
+        }
+    </script>
+</body>
+
+</html>

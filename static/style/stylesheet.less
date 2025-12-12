@@ -1,0 +1,177 @@
+@block-size : 50px;
+
+body,
+html {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+}
+
+div {
+    &#content {
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+        flex: 1;
+        background-color: rgb(62, 62, 48);
+    }
+
+    &#clues {
+        white-space: nowrap;
+
+        overflow-y: auto;
+        background-color: rgb(88, 88, 69);
+        flex: 1;
+        margin: 0;
+        height: 100%;
+
+        .clue {
+            margin-bottom: 5px;
+            white-space: wrap;
+            color: black;
+            font-size: 20px;
+            display: block;
+            padding: 10px;
+            border-radius: 3px;
+            background-color: antiquewhite;
+            border: 1px solid rgb(123, 110, 87);
+        }
+    }
+
+    &#control {
+        background-color: rgb(78, 70, 55);
+        box-sizing: border-box;
+        height: 10%;
+        padding: 20px;
+
+        label {
+            color: white;
+            font-size: 20px;
+        }
+
+        input {
+            background-color: antiquewhite;
+            font-family: 'Courier New', Courier, monospace;
+            box-sizing: border-box;
+            border-radius: 5px;
+            font-size: 20px;
+            padding: 10px;
+            border: 1px solid rgb(123, 110, 87);
+
+            &:focus {
+                border: 1px solid rgb(123, 110, 87);
+                outline: none;
+                transform: scale(1.05);
+            }
+        }
+
+        button {
+            font-family: 'Courier New', Courier, monospace;
+            border: 1px solid rgb(123, 110, 87);
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 5px;
+            background-color: antiquewhite;
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    &.container {
+        box-sizing: border-box;
+        display: flex;
+        height: 80%;
+    }
+
+    &#header {
+        background-color: rgb(78, 70, 55);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        height: 10%;
+        padding-left: 20px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background-image: url('../src/CWAI.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left center;
+        }
+
+
+        span {
+            padding: 0;
+            margin-left: 10px;
+            line-height: 70px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 50px;
+            color: white;
+        }
+    }
+}
+
+span {
+    &.letter-block {
+        box-sizing: border-box;
+        position: relative;
+        display: inline-block;
+        font-size: 40px;
+        text-align: center;
+        line-height: @block-size;
+        margin: 2px;
+        height: @block-size;
+        width: @block-size;
+        background-color: antiquewhite;
+        border: 1px solid rgb(123, 110, 87);
+        border-radius: 4px;
+        vertical-align: top;
+        transition-duration: 0.1s;
+
+        &.start::after {
+            content: attr(data-index);
+            position: absolute;
+            left: 0;
+            top: -12px;
+            color: rgb(3, 3, 3);
+            font-size: 20px;
+        }
+
+        &.disabled {
+            background-color: rgb(161, 151, 138);
+        }
+
+        &:focus-within {
+            transform: scale(1.1);
+        }
+
+        input.letter-input {
+            text-align: center;
+            color: black;
+            font: inherit;
+            height: @block-size;
+            margin: 0;
+            padding: 0;
+            line-height: @block-size;
+            border: none;
+            background-color: transparent;
+            width: 100%;
+            caret-color: transparent;
+
+            &:focus {
+                border: none;
+                outline: none;
+            }
+        }
+    }
+}
